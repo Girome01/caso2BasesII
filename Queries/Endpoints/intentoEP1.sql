@@ -28,4 +28,4 @@ INNER JOIN "Plan" plans ON plans.planID = acc.planID
 INNER JOIN Partido par ON par.partidoId = plans.PartidoId
 INNER JOIN calificacionEntregables cent ON cent.entregableId = ent.entregableId
 WHERE par.partidoId = 4 AND 12 = acc.accionId
-GROUP BY can.nombre
+GROUP BY can.nombre, par.nombre, ent.entregableId, acc.accionId
