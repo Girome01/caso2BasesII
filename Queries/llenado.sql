@@ -86,10 +86,12 @@ DECLARE @canton INT;
 DECLARE @accion INT;
 DECLARE @kpiType NVARCHAR(20);
 DECLARE @plan INT;
-DECLARE @satis float;
+DECLARE @postTime DATE;
 
-SET @accion = 12
-SET @satis = 0.01;
+Declare @DateStart	Date = '2001-01-01'
+		,@DateEnd	Date = '2022-01-01'
+
+SET @accion = 45
 
 WHILE @accion > 0
 BEGIN
@@ -102,12 +104,13 @@ BEGIN
 		SET @kpiType = (SELECT kpiType FROM Accion WHERE accionId = @accion);
 		SET @plan = (SELECT planId FROM Accion WHERE accionId = @accion);
 		SET @canton = RAND()*(11-1)+1; -- Numero random entre 1 y 10
+		SET @postTime = DateAdd(Day, Rand() * DateDiff(Day, @DateStart, @DateEnd), @DateStart)
 		
 		INSERT INTO Entregable (planid, cantonId, kpiValue, kpiType, postTime, checksum, accionId, fechaFinalizacion, satisfaccion)
-		VALUES (@plan, @canton, RAND()*(50-1)+1, @kpiType, GETDATE(), CHECKSUM(@canton,@accion),@accion, DATEADD(year, 5, GETDATE()), @satis);
+		VALUES (@plan, @canton, RAND()*(50-1)+1, @kpiType, @postTime, CHECKSUM(@canton,@accion),@accion, DATEADD(year, RAND()*(11-1)+1, @postTime), (RAND()*(100-1)+1)/100);
 
 		SET @cantidad = @cantidad - 1;
-		SET @satis = @satis + 0.01;
+
 	END;
  
 	SET @accion = @accion - 1;
@@ -143,3 +146,4 @@ VALUES
 -- CANTONPERUSUARIO
 
 -- CALIFICACIONENTREGABLES
+

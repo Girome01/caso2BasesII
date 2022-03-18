@@ -1,6 +1,11 @@
 USE bases2_caso1
 
--- ******************************************* END Point 3 *****************************************************************************
+-- ******************************************* END Point 3 ****************************************************************************
+
+CREATE FULLTEXT CATALOG FullTextCatalog
+CREATE UNIQUE INDEX 
+
+
 
 DROP PROCEDURE IF EXISTS [EndPoint3]
 GO
@@ -12,8 +17,8 @@ AS
 		RANK() OVER
 		(PARTITION BY DATEPART(year, ent.postTime) ORDER BY COUNT(*)) Position
 		FROM Entregable AS ent
-		INNER JOIN [Plan] pln ON pln.planId = ent.planId
-		INNER JOIN Partido part ON part.partidoId = pln.partidoId 
+		LEFT JOIN [Plan] pln ON pln.planId = ent.planId
+		LEFT JOIN Partido part ON part.partidoId = pln.partidoId 
 		GROUP BY part.nombre, ent.postTime
 	) t
 	WHERE Position < 4;
