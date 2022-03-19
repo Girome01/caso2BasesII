@@ -4,7 +4,7 @@ USE bases2_caso1
 
 DROP PROCEDURE IF EXISTS [EndPoint2]
 GO
-CREATE PROCEDURE [dbo].[EndPoint2]
+CREATE PROCEDURE [dbo].[EndPoint2] @partido NVARCHAR(100), @accion smallint
 AS
 	SELECT partido AS Partido, accion AS Accion, [1] AS Tercio_1, [2] AS Tercio_2, [3] AS Tercio_3
 	FROM 
@@ -15,7 +15,7 @@ AS
 		LEFT JOIN Partido part ON part.partidoId = pln.partidoId
 		LEFT JOIN Entregable ent ON ent.accionId = acc.accionId
 		LEFT JOIN Canton cant ON cant.cantonId = ent.cantonId
-		WHERE part.nombre = 'PLN' AND acc.accionId = 3
+		WHERE part.nombre = @partido AND acc.accionId = @accion
 		GROUP BY part.nombre, acc.accionId, ent.cantonId, ent.satisfaccion
 	) AS datos
 	PIVOT
@@ -25,4 +25,5 @@ AS
 	) AS PivotTable;
 GO
 
-EXEC EndPoint2
+EXEC EndPoint2 @partido = 'Partido Liberacion Nacional', @accion = 3
+
