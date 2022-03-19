@@ -12,7 +12,7 @@ CREATE TYPE entregableType AS TABLE
 )
 GO
 
-CREATE PROCEDURE [dbo].[enPoint6]
+CREATE PROCEDURE [dbo].[EndPoint6]
 	@Usuario NVARCHAR(50),
 	@Plan NVARCHAR(100),
 	@EntregablesType entregableType READONLY

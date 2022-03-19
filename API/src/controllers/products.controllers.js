@@ -30,3 +30,23 @@ export const execEP2 = async (req, res) => {
     res.json(result.recordset);
 
 };
+
+export const execEP4 = async (req, res) => {
+    
+    const pool = await getConnection();
+    const result = await pool.request().query(queries.endpoint4);
+    console.log(result);
+    
+    res.json(result.recordset);
+
+};
+
+export const execEP5 = async (req, res) => {
+    
+    const pool = await getConnection();
+    const result = await pool.request().query(queries.endpoint5);
+    console.log(result);
+    
+    res.json(result.recordset);
+
+};
