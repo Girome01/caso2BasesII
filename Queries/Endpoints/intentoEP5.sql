@@ -37,3 +37,5 @@ as
 	) as pivotTable
 	ORDER BY Partido
 GO
+
+EXEC EndPoint5
