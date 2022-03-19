@@ -3,11 +3,11 @@ use bases2_caso1;
 -- PARTIDO
 INSERT INTO Partido (nombre, bandera, fechaCreacion)
 VALUES 
-('PLN', 100000, GETDATE()),
-('PAC', 100001, GETDATE()),
-('PUSC', 100002, GETDATE()),
-('FA', 100003, GETDATE()),
-('RN', 100004, GETDATE());
+('Partido Liberacion Nacional', 100000, GETDATE()),
+('Partido Accion Ciudadana', 100001, GETDATE()),
+('Partido Unidad Social Cristiana', 100002, GETDATE()),
+('Frente Amplio', 100003, GETDATE()),
+('Restauracion Nacional', 100004, GETDATE());
 
 -- PLAN
 INSERT INTO [Plan] (titulo, descripcion, partidoId, fechaInicio, fechaFinaliza)
@@ -146,4 +146,3 @@ VALUES
 -- CANTONPERUSUARIO
 
 -- CALIFICACIONENTREGABLES
-
