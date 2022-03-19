@@ -1,6 +1,6 @@
 import express from "express";
-import config from './config'
-import productsRoutes from './routes/products.routes'
+import config from '../config';
+import routes from '../routes/routes';
 
 const app = express()
 
@@ -11,6 +11,6 @@ app.set('port', config.port);
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
-app.use(productsRoutes)
+app.use(routes)
 
 export default app;

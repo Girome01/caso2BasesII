@@ -1,5 +1,5 @@
 import {Router} from "express";
-import {execEP1, execEP2, execEP3, execEP4, execEP5, execEP6, getUsuario} from '../controllers/products.controllers'
+import {execEP1, execEP2, execEP3, execEP4, execEP5, execEP6, getUsuario} from '../controllers/controllers'
 
 const router = Router();
 
