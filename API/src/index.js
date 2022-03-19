@@ -1,4 +1,4 @@
-import app from './app';
+import app from './middlewares/app';
 
 app.listen(app.get('port'))
 
