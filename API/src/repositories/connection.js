@@ -1,4 +1,5 @@
 import sql from 'mssql';
+import queries from '../repositories/queries';
 
 export class data {
     constructor(){
@@ -16,6 +17,7 @@ export class data {
         this.pool = this.getConnection();
     }
     
+    // Un solo pool
     async getConnection() {
         try {
             const pool = await sql.connect(this.dbSettings);
@@ -25,5 +27,49 @@ export class data {
             }
     }
 
+    // Llamadas a SP
+    async getUsuario(){
+        const result = await (await this.pool).request().query(queries.getUsuarios);
+        return result;
+    }
+
     
+    async execEP1(){
+        const result = await (await this.pool).request().query(queries.endpoint1);
+        return result;
+    }
+
+    async execEP2(partido,accion){
+        const result = await (await this.pool).request()
+        .input("par1", partido)
+        .input("par2", accion)
+        .query(queries.endpoint2);
+
+        console.log(partido);
+        console.log(accion);
+
+        return result;
+    }
+    
+    async execEP3(palabras){
+        const result = await (await this.pool).request()
+        .input("par", palabras)
+        .query(queries.endpoint3);
+        return result;
+    }
+
+    async execEP4(){
+        const result = await (await this.pool).request().query(queries.endpoint4);
+        return result;
+    }
+
+    async execEP5(){
+        const result = await (await this.pool).request().query(queries.endpoint5);
+        return result;
+    }
+
+    async execEP6(){
+        const result = await (await this.pool).request().query(queries.endpoint6);
+        return result;
+    }
 }

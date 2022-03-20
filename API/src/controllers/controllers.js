@@ -1,64 +1,49 @@
 import {data} from "../repositories/connection";
-import queries from '../repositories/queries'
 
 export class controller {
 
     constructor(){}
 
-    getInstance() {
-        if (this.instance){
-            this.instance = new controller();
-        }
-        return this.instance;
+    async getUsuario() {
+        const pool = new data();
+        const result = await pool.getUsuario();
+        return result;
     }
 
-    getUsuario = async (req, res) => {
-        const pool = new data().pool;
-        const result = await (await pool).request().query(queries.getUsuarios);
-        console.log(result);
-        
-        res.json(result.recordset);
+
+    async execEP1() {
+        const pool = new data();
+        const result = await pool.execEP1();
+        return result;
     }
 
+    async execEP2(partido,accion) {
+        const pool = new data();
+        const result = await pool.execEP2(partido,accion);
+        return result;
+    }
+
+    async execEP3(palabras) {
+        const pool = new data();
+        const result = await pool.execEP3(palabras);
+        return result;
+    }
+
+    async execEP4() {
+        const pool = new data();
+        const result = await pool.execEP4();
+        return result;
+    }
+
+    async execEP5() {
+        const pool = new data();
+        const result = await pool.execEP5();
+        return result;
+    }
+
+    async execEP6() {
+        const pool = new data();
+        const result = await pool.execEP6();
+        return result;
+    }
 }
-
-export const execEP1 = async (req, res) => {
-    
-    const pool = await connection.getConnection();
-    const result = await pool.request().query(queries.endpoint1);
-    console.log(result);
-    
-    res.json(result.recordset);
-
-};
-
-export const execEP2 = async (req, res) => {
-    
-    const connect = new data();
-    const pool = await connect.getConnection();
-    const result = await pool.request().query(queries.endpoint2);
-    console.log(result);
-    
-    res.json(result.recordset);
-
-};
-
-export const execEP4 = async (req, res) => {
-    
-    const pool = await connection.getConnection();
-    const result = await pool.request().query(queries.endpoint4);
-    console.log(result);
-    
-    res.json(result.recordset);
-
-};
-
-export const execEP5 = async (req, res) => {
-    
-    const pool = await connection.getConnection();
-    const result = await pool.request().query(queries.endpoint5);
-    console.log(result);
-    
-    res.json(result.recordset);
-
-};

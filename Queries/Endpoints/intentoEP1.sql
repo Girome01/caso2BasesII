@@ -21,6 +21,8 @@ GO
 
 -- ***********************************************************************************************************************************************************************
 
+EXEC EndPoint1;
+
 SELECT par.nombre partido, can.nombre nomCanton, ent.entregableId EntregableId, acc.accionId Accion FROM Entregable as ent
 INNER JOIN Canton can ON can.cantonId = ent.cantonId
 INNER JOIN Accion acc ON acc.accionId = ent.accionId
