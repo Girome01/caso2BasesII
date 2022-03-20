@@ -1,4 +1,5 @@
-USE bases2_caso1
+ USE bases2_caso1
+
 
 GO
 CREATE TYPE entregableType AS TABLE
@@ -135,8 +136,10 @@ RETURN 0
 GO
 
 /*
+-- Se declara una variable para la tabla TVP
 DECLARE @TVP AS entregableType;
 
+-- se insertan los daros de los entregables en la tabla TVP
 INSERT INTO @TVP (kpiValue, kpiType, accionId,fechaFinalizacion,valorRef,ranking)
 VALUES
 (1, 'impuestos', 2, GETDATE(), 1, 90)
@@ -147,5 +150,6 @@ VALUES
 
 SELECT * FROM Entregable
 SELECT * FROM calificacionEntregables
+-- el SP recibe el nombre del usuario, nombre del plan y los datos de los entregables en una tabla TVP
 EXEC enPoint6 'Nombre374008','Plan PLN',@TVP
 SELECT * FROM Entregable*/

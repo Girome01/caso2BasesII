@@ -65,8 +65,12 @@ export class data {
         return result;
     }
 
-    async execEP6(){
-        const result = await (await this.pool).request().query(queries.endpoint6);
+    async execEP6(usuario, plan, tvp_Ent){
+        const result = await (await this.pool).request()
+        .input("usuarioRef", usuario)
+        .input("planRef", plan)
+        .input("tvp_EntRef", tvp_Ent)
+        .query(queries.endpoint6);
         return result;
     }
 }

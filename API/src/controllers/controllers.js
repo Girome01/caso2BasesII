@@ -41,9 +41,9 @@ export class controller {
         return result;
     }
 
-    async execEP6() {
+    async execEP6(usuario, plan, tvp_Ent) {
         const pool = new data();
-        const result = await pool.execEP6();
+        const result = await pool.execEP6(usuario, plan, tvp_Ent);
         return result;
     }
 }

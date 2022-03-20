@@ -5,5 +5,5 @@ export default {
     endpoint3: "EXEC EndPoint3 @palabras = @par",
     endpoint4: "EXEC EndPoint4",
     endpoint5: "EXEC EndPoint5",
-    endpoint6: "EXEC EndPoint6"
+    endpoint6: "EXEC EndPoint6 @usuario = @usuarioRef, @plan = @planRef, @tvp_EntRef = @tvp_Ent"
 }
