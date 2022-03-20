@@ -12,6 +12,8 @@ export class data {
                 trustServerCertificate: true,
             }
         }
+
+        this.pool = this.getConnection();
     }
     
     async getConnection() {
@@ -22,4 +24,6 @@ export class data {
             console.error(error);
             }
     }
+
+    
 }

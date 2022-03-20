@@ -1,10 +1,11 @@
 import {Router} from "express";
-import {getUsuario} from '../controllers/controllers'
+import {controller} from '../controllers/controllers'
 
 const router = Router();
+const control = new controller();
 
 
-router.get('/prueba', getUsuario);
+router.get('/prueba', control.getUsuario);
 
 //router.get('/endpoint1', execEP1);
 //router.get('/endpoint2', execEP2);

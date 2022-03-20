@@ -1,15 +1,26 @@
 import {data} from "../repositories/connection";
 import queries from '../repositories/queries'
 
+export class controller {
 
+    constructor(){}
 
-export const getUsuario = async (req, res) => {
-        const pool = new data().getConnection();
+    getInstance() {
+        if (this.instance){
+            this.instance = new controller();
+        }
+        return this.instance;
+    }
+
+    getUsuario = async (req, res) => {
+        const pool = new data().pool;
         const result = await (await pool).request().query(queries.getUsuarios);
         console.log(result);
         
         res.json(result.recordset);
     }
+
+}
 
 export const execEP1 = async (req, res) => {
     
