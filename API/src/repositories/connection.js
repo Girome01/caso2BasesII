@@ -45,9 +45,6 @@ export class data {
         .input("par2", accion)
         .query(queries.endpoint2);
 
-        console.log(partido);
-        console.log(accion);
-
         return result;
     }
     
