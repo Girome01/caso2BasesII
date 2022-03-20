@@ -1,19 +1,19 @@
-import {getConnection} from "../database/connection";
-import queries from '../database/queries'
+import {data} from "../repositories/connection";
+import queries from '../repositories/queries'
+
+
 
 export const getUsuario = async (req, res) => {
-    
-    const pool = await getConnection();
-    const result = await pool.request().query(queries.getUsuarios);
-    console.log(result);
-    
-    res.json(result.recordset);
-
-};
+        const pool = new data().getConnection();
+        const result = await (await pool).request().query(queries.getUsuarios);
+        console.log(result);
+        
+        res.json(result.recordset);
+    }
 
 export const execEP1 = async (req, res) => {
     
-    const pool = await getConnection();
+    const pool = await connection.getConnection();
     const result = await pool.request().query(queries.endpoint1);
     console.log(result);
     
@@ -23,7 +23,8 @@ export const execEP1 = async (req, res) => {
 
 export const execEP2 = async (req, res) => {
     
-    const pool = await getConnection();
+    const connect = new data();
+    const pool = await connect.getConnection();
     const result = await pool.request().query(queries.endpoint2);
     console.log(result);
     
@@ -33,7 +34,7 @@ export const execEP2 = async (req, res) => {
 
 export const execEP4 = async (req, res) => {
     
-    const pool = await getConnection();
+    const pool = await connection.getConnection();
     const result = await pool.request().query(queries.endpoint4);
     console.log(result);
     
@@ -43,7 +44,7 @@ export const execEP4 = async (req, res) => {
 
 export const execEP5 = async (req, res) => {
     
-    const pool = await getConnection();
+    const pool = await connection.getConnection();
     const result = await pool.request().query(queries.endpoint5);
     console.log(result);
     

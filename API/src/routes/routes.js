@@ -1,15 +1,16 @@
 import {Router} from "express";
-import {execEP1, execEP2, execEP3, execEP4, execEP5, execEP6, getUsuario} from '../controllers/controllers'
+import {getUsuario} from '../controllers/controllers'
 
 const router = Router();
 
+
 router.get('/prueba', getUsuario);
 
-router.get('/endpoint1', execEP1);
-router.get('/endpoint2', execEP2);
+//router.get('/endpoint1', execEP1);
+//router.get('/endpoint2', execEP2);
 //router.get('/endpoints', execEP3);
-router.get('/endpoint4', execEP4);
-router.get('/endpoint5', execEP5);
+//router.get('/endpoint4', execEP4);
+//router.get('/endpoint5', execEP5);
 //router.get('/endpoints', execEP6);
 
 // router.post('/products', )

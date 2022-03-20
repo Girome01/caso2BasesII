@@ -1,8 +1,8 @@
 import express from "express";
-import config from '../config';
-import routes from '../routes/routes';
+import config from './config';
+import routes from './routes/routes';
 
-const app = express()
+const app = express();
 
 //settings
 app.set('port', config.port);
