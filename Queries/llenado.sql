@@ -106,8 +106,8 @@ BEGIN
 		SET @canton = RAND()*(11-1)+1; -- Numero random entre 1 y 10
 		SET @postTime = DateAdd(Day, Rand() * DateDiff(Day, @DateStart, @DateEnd), @DateStart)
 		
-		INSERT INTO Entregable (planid, cantonId, kpiValue, kpiType, postTime, checksum, accionId, fechaFinalizacion, satisfaccion)
-		VALUES (@plan, @canton, RAND()*(50-1)+1, @kpiType, @postTime, CHECKSUM(@canton,@accion),@accion, DATEADD(year, RAND()*(11-1)+1, @postTime), (RAND()*(100-1)+1)/100);
+		INSERT INTO Entregable (planid, cantonId, kpiValue, kpiType, postTime, checksum, accionId, fechaFinalizacion)
+		VALUES (@plan, @canton, RAND()*(50-1)+1, @kpiType, @postTime, CHECKSUM(@canton,@accion),@accion, DATEADD(year, RAND()*(11-1)+1, @postTime));
 
 		SET @cantidad = @cantidad - 1;
 
