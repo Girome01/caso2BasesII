@@ -144,5 +144,18 @@ VALUES
 ('Valli', 'Pataballa', 'asdf', RAND()*(7-1)+1, GETDATE(), RAND()*(6-1)+1, '123456789012');
 
 -- CANTONPERUSUARIO
+DECLARE @cant INT;
+SET @cant = RAND()*(21-10)+10;
+
+WHILE @cant > 0
+BEGIN
+
+	INSERT INTO cantonperusuario (usuarioId, cantonId, posttime)
+	VALUES
+	(RAND()*(13-1)+1, RAND()*(22-1)+1, GETDATE());
+
+	SET @cant = @cant - 1;
+	
+END;
 
 -- CALIFICACIONENTREGABLES

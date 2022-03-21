@@ -1,5 +1,6 @@
 import {Router} from "express";
 import {controller} from '../controllers/controllers'
+import sql from 'mssql';
 
 const router = Router();
 const control = new controller();
@@ -24,7 +25,7 @@ router.get('/endpoint2/:partido/:accion', async (req, res)=>{
     const {partido,accion} = req.params;
     const result = await control.execEP2(partido,accion);
     
-    //console.log(result); 
+    // console.log(result); 
     res.send(result.recordset);
 });
 
@@ -50,7 +51,10 @@ router.get('/endpoint5', async (req, res)=>{
     res.json(result.recordset);
 });
 
-router.get('/endpoint6', async (req, res)=>{
+router.get('/endpoint6/:usuario/:plan', async (req, res)=>{
+    //Recibir el usuario y plan como parametros
+    const {usuario, plan} = req.params;
+    
     //Tratar de crear la TVP para poder incorporar todos los entregables
     // Se crea la variable que referencia a la tabla igual seria el DECLARE @TVP AS entregableType;
     var tvp_Ent = new sql.Table();  
@@ -68,11 +72,10 @@ router.get('/endpoint6', async (req, res)=>{
         //tvp_Emp.rows.add('kpiValue', 'kpiType', 'accionId', 'fechaFinalizacion', 'valorRef', 'ranking');
         tvp_Ent.rows.add(list[i].kpiValue, list[i].kpiType, list[i].accionId, list[i].fechaFinalizacion, i, list[i].ranking);
     }
-    //Recibir el usuario y plan como parametros
-    const {usuario, plan} = req.params;
-
+    
     const result = await control.execEP6(usuario, plan, tvp_Ent);
-    //console.log(result);
+    
+    console.log(result);
     res.json(result.recordset);
 });
 
