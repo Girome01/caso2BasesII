@@ -34,22 +34,27 @@ BEGIN
 
 	SELECT @UserId = us.usuarioId FROM Usuario us WHERE us.nombre =  TRIM(@Usuario) -- Conseguir el id del usuario
 
-	IF (@UserID = 0)
+	IF (@UserID = NULL) BEGIN
+		SELECT 'No se encuentra ese usuario.'
         RAISERROR('%s - Error Number: %i', 
             @ErrorSeverity, @ErrorState, @Message, @CustomError)
+	END
 
 	SELECT @CantonId = cUs.cantonId FROM cantonperusuario cUs WHERE cUs.usuarioId =  @UserId -- Conseguir el id del canton
 
-	IF (@CantonId = NULL)
+	IF (@CantonId = NULL)BEGIN
+		SELECT 'El usuario no tiene un canton registrado en la tabla de cantonesperusuario'
         RAISERROR('%s - Error Number: %i', 
             @ErrorSeverity, @ErrorState, @Message, @CustomError)
+	END
 
 	SELECT @PlanId = plans.planId FROM [Plan] plans WHERE plans.titulo =  TRIM(@Plan) -- Conseguir el id del plan
 
-	IF (@PlanId = NULL)
+	IF (@PlanId = NULL) BEGIN
+		SELECT 'No se encuentra ese planId'
         RAISERROR('%s - Error Number: %i', 
             @ErrorSeverity, @ErrorState, @Message, @CustomError)
-
+	END
 	SELECT @totalFila = COUNT(entType.accionId) FROM @EntregablesType entType
 	-- operaciones de select que no tengan que ser bloqueadas
 	-- tratar de hacer todo lo posible antes de q inice la transaccion
