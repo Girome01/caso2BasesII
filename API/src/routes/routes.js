@@ -51,7 +51,7 @@ router.get('/endpoint5', async (req, res)=>{
     res.json(result.recordset);
 });
 
-router.get('/endpoint6/:usuario/:plan', async (req, res)=>{
+router.post('/endpoint6/:usuario/:plan', async (req, res)=>{
     //Recibir el usuario y plan como parametros
     const {usuario, plan} = req.params;
     
@@ -67,12 +67,11 @@ router.get('/endpoint6/:usuario/:plan', async (req, res)=>{
     tvp_Ent.columns.add('ranking', sql.SMALLINT); 
     
     //Esta parte se espera registrar todos los entregables que vengan en el body del http
-    const list = req.body;
-    for(var i = 1; i<list.length; i++){
-        //tvp_Emp.rows.add('kpiValue', 'kpiType', 'accionId', 'fechaFinalizacion', 'valorRef', 'ranking');
-        tvp_Ent.rows.add(list[i].kpiValue, list[i].kpiType, list[i].accionId, list[i].fechaFinalizacion, i, list[i].ranking);
-    }
-    
+    const {jkpiValue, jkpiType, jaccionId, jfechaFinalizacion, jvalorRef, jranking} = req.body;
+
+    //tvp_Emp.rows.add('kpiValue', 'kpiType', 'accionId', 'fechaFinalizacion', 'valorRef', 'ranking');
+    tvp_Ent.rows.add(jkpiValue, jkpiType, jaccionId, jfechaFinalizacion, jvalorRef, jranking);
+
     const result = await control.execEP6(usuario, plan, tvp_Ent);
     
     console.log(result);
