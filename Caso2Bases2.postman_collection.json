@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "42338e34-40cc-46cc-aa60-95cab7ffdd3f",
+		"name": "Caso2Bases2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EndPoint1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Direcion}}/endpoint1",
+					"host": [
+						"{{Direcion}}"
+					],
+					"path": [
+						"endpoint1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EndPoint2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Direcion}}/endpoint2/Partido Liberacion Nacional/3",
+					"host": [
+						"{{Direcion}}"
+					],
+					"path": [
+						"endpoint2",
+						"Partido Liberacion Nacional",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EndPoint3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Direcion}}/endpoint3/'Unidad'",
+					"host": [
+						"{{Direcion}}"
+					],
+					"path": [
+						"endpoint3",
+						"'Unidad'"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EndPoint4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Direcion}}/endpoint4",
+					"host": [
+						"{{Direcion}}"
+					],
+					"path": [
+						"endpoint4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EndPoint5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Direcion}}/endpoint5",
+					"host": [
+						"{{Direcion}}"
+					],
+					"path": [
+						"endpoint5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EndPoint6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n{\r\n    \"kpiValue\": 1,\r\n    \"kpiType\": \"impuestos\",\r\n    \"accionId\": 45,\r\n    \"fechaFinalizacion\": \"2022-03-21 20:27:25.317\",\r\n    \"valorRef\": 1,\r\n    \"ranking\": 6\r\n},\r\n{\r\n    \"kpiValue\": 123,\r\n    \"kpiType\": \"impuestos\",\r\n    \"accionId\": 44,\r\n    \"fechaFinalizacion\": \"2022-03-21 20:27:25.317\",\r\n    \"valorRef\": 2,\r\n    \"ranking\": 100\r\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Direcion}}/endpoint6/Britney/Plan 3 RN",
+					"host": [
+						"{{Direcion}}"
+					],
+					"path": [
+						"endpoint6",
+						"Britney",
+						"Plan 3 RN"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "Direcion",
+			"value": "http://localhost:3000"
+		}
+	]
+}
