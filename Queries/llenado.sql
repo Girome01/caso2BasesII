@@ -30,7 +30,8 @@ VALUES
 
 -- ACCION
 DECLARE @c SMALLINT = 1;
-
+-- Recordar que si se agregan mas acciones se tiene que agregar en los entregables en la variable SET @accion = 64
+-- Para que recorra todas las acciones y les agregue un entregable
 WHILE @c < 16
 BEGIN
 
@@ -38,7 +39,8 @@ BEGIN
 	VALUES 
 	(@c, 'Traer empresas internacionales.', 'empresas'),
 	(@c, 'Eliminar restricciones vehiculares.', 'restricciones'),
-	(@c, 'Aumentar impuestos.', 'impuestos');
+	(@c, 'Aumentar impuestos.', 'impuestos'),
+	(@c, 'Arreglar carreteras.', 'carreteras')
 
 	SET @c = @c + 1;
 		
@@ -91,12 +93,12 @@ DECLARE @postTime DATE;
 Declare @DateStart	Date = '2001-01-01'
 		,@DateEnd	Date = '2022-01-01'
 
-SET @accion = 45
+SET @accion = 64
 
 WHILE @accion > 0
 BEGIN
 
-	SET @cantidad = RAND()*(8-3)+3; -- Numero random entre 3 y 7
+	SET @cantidad = FLOOR(RAND()*(12-6)+6); -- Numero random entre 6 y 12
 
 	WHILE @cantidad > 0
 	BEGIN
@@ -107,7 +109,7 @@ BEGIN
 		SET @postTime = DateAdd(Day, Rand() * DateDiff(Day, @DateStart, @DateEnd), @DateStart)
 		
 		INSERT INTO Entregable (planid, cantonId, kpiValue, kpiType, postTime, checksum, accionId, fechaFinalizacion)
-		VALUES (@plan, @canton, RAND()*(50-1)+1, @kpiType, @postTime, CHECKSUM(@canton,@accion),@accion, DATEADD(year, RAND()*(11-1)+1, @postTime));
+		VALUES (@plan, @canton, FLOOR(RAND()*(50-1)+1), @kpiType, @postTime, CHECKSUM(@canton,@accion),@accion, DATEADD(year, RAND()*(5 -1)+1, @postTime));
 
 		SET @cantidad = @cantidad - 1;
 
@@ -171,7 +173,7 @@ SET @entregable = (SELECT COUNT(*) FROM Entregable);
 
 WHILE @entregable > 0
 BEGIN
-	SET @calEntregable = FLOOR(RAND()*(8-3)+3)
+	SET @calEntregable = FLOOR(RAND()*(16-6)+6)
 
 	WHILE @calEntregable > 0
 	BEGIN
