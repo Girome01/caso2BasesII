@@ -22,12 +22,12 @@ export class controller {
         const result = await pool.execEP2(partido,accion);
         return result;
     }
-
+    /*
     async execEP3(palabras) {
         const pool = new data();
         const result = await pool.execEP3(palabras);
         return result;
-    }
+    }*/
 
     async execEP4() {
         const pool = new data();

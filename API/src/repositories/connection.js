@@ -47,13 +47,13 @@ export class data {
 
         return result;
     }
-    
+    /*
     async execEP3(palabras){
         const result = await (await this.pool).request()
         .input("par", palabras)
         .query(queries.endpoint3);
         return result;
-    }
+    }*/
 
     async execEP4(){
         const result = await (await this.pool).request().query(queries.endpoint4);
@@ -65,12 +65,12 @@ export class data {
         return result;
     }
 
-    async execEP6(usuario, plan, tvp_Ent){
+    async execEP6(usuario, plan, EntregablesType){
         const result = await (await this.pool).request()
-        .input("usuarioRef", usuario)
-        .input("planRef", plan)
-        .input("tvp_EntRef", tvp_Ent)
-        .query(queries.endpoint6);
+        .input("Usuario", usuario)
+        .input("Plan", plan)
+        .input("EntregablesType", EntregablesType)
+        .execute(queries.endpoint6);
         return result;
     }
 }

@@ -163,3 +163,25 @@ END;
 
 
 -- CALIFICACIONENTREGABLES
+
+DECLARE @entregable INT;
+DECLARE @calEntregable INT;
+
+SET @entregable = (SELECT COUNT(*) FROM Entregable);
+
+WHILE @entregable > 0
+BEGIN
+	SET @calEntregable = FLOOR(RAND()*(8-3)+3)
+
+	WHILE @calEntregable > 0
+	BEGIN
+
+		INSERT INTO calificacionEntregables (entregableId, usuarioId, [rank], posttime, [checksum])
+		VALUES
+		(@entregable, FLOOR(RAND()*(12-1)+1), FLOOR(RAND()*(100-1)+1), GETDATE(), CHECKSUM(@entregable,@calEntregable));
+
+		SET @calEntregable = @calEntregable -1;
+	END;
+
+	SET @entregable = @entregable - 1;
+END;
