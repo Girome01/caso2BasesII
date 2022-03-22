@@ -95,15 +95,12 @@
 		},
 		{
 			"name": "EndPoint6",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\r\n{\r\n    \"kpiValue\": 1,\r\n    \"kpiType\": \"impuestos\",\r\n    \"accionId\": 45,\r\n    \"fechaFinalizacion\": \"2022-03-21 20:27:25.317\",\r\n    \"valorRef\": 1,\r\n    \"ranking\": 6\r\n},\r\n{\r\n    \"kpiValue\": 123,\r\n    \"kpiType\": \"impuestos\",\r\n    \"accionId\": 44,\r\n    \"fechaFinalizacion\": \"2022-03-21 20:27:25.317\",\r\n    \"valorRef\": 2,\r\n    \"ranking\": 100\r\n}]",
+					"raw": "[\r\n{\r\n    \"kpiValue\": 55,\r\n    \"kpiType\": \"impuestos\",\r\n    \"accionId\": 45,\r\n    \"fechaFinalizacion\": \"2022-03-21 20:27:25.317\",\r\n    \"valorRef\": 1,\r\n    \"ranking\": 50\r\n}]",
 					"options": {
 						"raw": {
 							"language": "json"

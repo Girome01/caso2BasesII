@@ -13,6 +13,8 @@ CREATE TYPE entregableType AS TABLE
 )
 GO
 
+
+
 CREATE PROCEDURE [dbo].[EndPoint6]
 	@Usuario NVARCHAR(50),
 	@Plan NVARCHAR(100),
@@ -121,7 +123,6 @@ BEGIN
 		END
 		IF @InicieTransaccion=1 BEGIN
 			COMMIT
-			SELECT '200 OKEY'
 		END
 	END TRY
 	BEGIN CATCH
