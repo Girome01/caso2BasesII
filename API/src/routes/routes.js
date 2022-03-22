@@ -51,7 +51,7 @@ router.get('/endpoint5', async (req, res)=>{
     res.json(result.recordset);
 });
 
-router.get('/endpoint6/:usuario/:plan', async (req, res)=>{
+router.post('/endpoint6/:usuario/:plan', async (req, res)=>{
     //Recibir el usuario y plan como parametros
     const {usuario, plan} = req.params;
     
@@ -72,7 +72,6 @@ router.get('/endpoint6/:usuario/:plan', async (req, res)=>{
         const {kpiValue, kpiType, accionId, fechaFinalizacion, valorRef, ranking} = req.body[i];
         tvp_Ent.rows.add(kpiValue, kpiType, accionId, fechaFinalizacion, valorRef, ranking);
     }
-    
     const result = await control.execEP6(usuario, plan, tvp_Ent);
     
     console.log(result);
